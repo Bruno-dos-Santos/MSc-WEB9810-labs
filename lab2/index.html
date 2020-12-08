@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Color Picker Game - Lab2 - D20125947 Bruno dos Santos</title>
+      <style>
+          :root {
+              --grid-cols: 1;
+              --grid-rows: 1;
+            }
+          #container {
+              display: grid;
+              grid-gap: 10px;
+              grid-template-rows: repeat(var(--grid-rows), 1fr);
+              grid-template-columns: repeat(var(--grid-cols), 1fr);
+            }
+          .grid-item {
+              padding: 1em;
+              border: 1px solid #ddd;
+              text-align: center;
+            }
+          
+          #main {
+              margin: 10px;
+          }
+          #top{
+              margin: 10px;              
+              min-height: 100px;
+              text-align: center;
+          } 
+          
+          #bottom{
+              margin: 10px;              
+              min-height: 100px;
+              text-align: center;
+          }
+          #middle{
+              margin: 10px;              
+              min-height: 200px;
+              height: auto;
+          }
+          #selectedColor {
+              min-height: 3em;
+              height: auto;
+          }
+          button{
+          }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+        <div id="top">
+            <div>
+            </div>
+                <h2> Color Picker Game - Lab2 - D20125947 Bruno dos Santos  </h2>
+            <div>
+                <div>
+                    <h2 id="txt"></h2>
+                </div>
+                <div id="selectedColor">                
+                </div>
+            </div>
+        </div>
+        <div id="middle">
+            <div id="container">
+            </div>            
+        </div>    
+        <div id="bottom">
+            <h2 id="txtTimer"></h2>
+            
+            <label for="DifficultyLevel" id="DifficultyLevelLabel">Choose a Difficulty Levels:</label>
+            <select name="DifficultyLevel" id="DifficultyLevel">
+              <option value="6">Easy 6 x 6</option>
+              <option value="8">Medium 8 x 8</option>
+              <option value="10">Hard 10 x 10</option>
+              <option value="12">Insane 12 x 12</option>
+            </select>
+            <input type="button" id="startButton" value="start" onclick="startClicked();">            
+        </div>            
+    </div>    
+    <script>
+        
+        let gameOver = false;
+        
+        let cellSelected = {
+            idCell : undefined,
+            colorCell : undefined
+        };
+        
+        let count = 0;
+        let maxMatches = 0; 
+        let minutes = 0 ;
+        let seconds = 0;
+
+        
+        function defaultValuesAB() {
+            cellA = Object.create(cellSelected);
+            cellB = Object.create(cellSelected);
+        }
+        
+        defaultValuesAB();
+        
+        function disableCell(cells){
+            
+            cells.forEach(function(cell) {
+
+                with (document.getElementById(cell.idCell)) {
+                    style.background = "black";
+                    style.cursor = "not-allowed";
+                    onclick = null;
+                }
+            });
+                                    
+            defaultValuesAB()
+            if (maxMatches == count) {
+                gameOver = true;                
+                 document.getElementById('txtTimer').innerHTML = "Game Over - (" + minutes + ":" + seconds + "), you win!!" + count + " match(es)!";             
+            }
+        }
+        
+        function checkColor(cell){            
+            function defineColor_text(color, txt){
+                document.getElementById('selectedColor').style.background = color;
+                document.getElementById('txt').innerHTML = txt;                
+                
+            }
+            
+            if ((!gameOver) && (cellA.idCell != cell.id)) {
+                
+                if (cellA.idCell === undefined) {
+                    cellA.idCell = cell.id;
+                    cellA.colorCell = cell.style.background;                
+                    defineColor_text(cell.style.background, cellA.colorCell);
+                }
+                else {
+                    cellB.idCell = cell.id;
+                    cellB.colorCell = cell.style.background;
+
+                    if (cellB.colorCell == cellA.colorCell) {
+
+                        defineColor_text("#FFF", "a match!!!");
+                        count++;
+                        disableCell([cellA, cellB]);
+                    }
+                    else {
+                        defineColor_text("#FFF", "Sorry, that wasn't a match, please try again!");
+                        defaultValuesAB();
+
+                    }                    
+
+                }                
+            }
+
+            
+        }
+        const container = document.getElementById("container");
+        
+        let colors = ['blue', 'red', 'green', 'orange',  'purple', 'gray'];
+        
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+                
+        function drawGrid(rows, cols) {
+          container.style.setProperty('--grid-rows', rows);
+          container.style.setProperty('--grid-cols', cols);
+          for (c = 0; c < (rows * cols); c++) {              
+              let cell = document.createElement("div");
+              cell.id = (c + 1);
+              cell.style.cursor = 'pointer';
+              cell.onclick = function() {
+                  checkColor(this);                  
+              };              
+            container.appendChild(cell).className = "grid-item";
+          }
+          total = (rows * cols);
+          var Array = []
+          for (var i = 0; i < total; i++) {
+              Array.push(i+1);
+          }
+            
+          shuffleArray(Array); 
+            
+          for (c = 0; c < (total/2); c++) {
+              color = colors[Math.floor(Math.random() * 6)];
+              document.getElementById(Array[c]).style.background = color;
+              document.getElementById(Array[total-c-1]).style.background = color;
+          }
+            
+        };
+        
+        function startClicked(){
+            document.getElementById("DifficultyLevelLabel").style.visibility = "hidden"; 
+            document.getElementById("DifficultyLevel").style.visibility = "hidden"; 
+            document.getElementById("startButton").style.visibility = "hidden"; 
+            
+            
+            startTimer(0, document.getElementById('txtTimer'));
+            getTotalSizeGrid = document.getElementById("DifficultyLevel").value;
+            maxMatches = (getTotalSizeGrid*getTotalSizeGrid)/2;
+            drawGrid(getTotalSizeGrid, getTotalSizeGrid);
+        }
+        
+        function startTimer(duration, display){
+            var timer = duration;
+            setInterval(function(){
+                minutes = parseInt(timer/ 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                
+                if (!gameOver){
+                    display.innerHTML = "Elapsed time: " + minutes + ":" + seconds + "  => "+ count + " match(es) ";                    
+                }
+            timer++;            
+            }, 1000);
+        }
+               
+    </script>
+  </body>
+</html>

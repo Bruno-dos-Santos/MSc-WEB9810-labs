@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">    
+    <title>lab5</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
+    
+
+</head>
+<body>
+    <div id="main">
+        <div id="top">
+            <h1>Lab5 - Parsing JSON - D20125947 Bruno dos Santos </h1>    
+        </div>
+        <div id="middle">
+            <input type="button" value="load/parse data" id="btn1"> 
+        </div>
+        <div id="data">
+            <div id="divs">
+                <h2>Divs: </h2>
+                <div id="container"></div>
+            </div>
+            <div id="tables">
+                <h2>bootstrap-Table: </h2>
+                <table id="table"></table>
+            </div>
+        </div>
+    </div>
+    <script>    
+        document.getElementById("btn1").addEventListener("click", load_data);
+        
+        let parse = function(response) {
+            console.log(response);
+        }
+
+        let errorHandler = function() {
+            console.log('error');
+        }
+        
+        function load_data(){
+            const container = document.getElementById("container");
+            container.innerHTML = "";
+            new Promise(function(resolve, reject) {
+                let ajaxRequest = new XMLHttpRequest();
+                ajaxRequest.onreadystatechange = function() {
+                    if (this.status === 200) 
+                    {
+                        if (this.readyState != 4) 
+                        {
+                            document.getElementById("btn1").disabled = true;
+                        } else 
+                        {
+                            jsonObj = JSON.parse(ajaxRequest.responseText);
+                            for (i = 0; i < jsonObj.length; i++) {
+                                let row = document.createElement("div");
+                                container.appendChild(row).className = "js-names";
+                                row.style = "border:1px black solid;"
+                                row.innerHTML = jsonObj[i].name;
+                            }
+                            $('#table').bootstrapTable({
+                                pagination: true,
+                                search: true,
+                                columns: [{field: 'name', title: 'Name'}, 
+                                          {field: 'username', title: 'Username'}, 
+                                          {field: 'email',title: 'Email'}, 
+                                          {field: 'phone',title: 'Phone'}],
+                                data: jsonObj
+                            })
+                            document.getElementById("btn1").disabled = false;
+                        }
+                    }
+                }
+                ajaxRequest.open('GET', 'http://jsonplaceholder.typicode.com/users');
+                ajaxRequest.send();
+            }).then(parse).catch(errorHandler);
+            
+        }
+    </script>
+</body>
+</html>

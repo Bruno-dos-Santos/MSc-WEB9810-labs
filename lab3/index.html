@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">    
+    <link id="style" rel="stylesheet" type="text/css" href="css/professional.css" />
+    <title>lab3</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        
+    table, th, td {
+      border: 1px solid black;
+      text-align: center;
+    }
+        
+    /* The grid: Four equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 20%;
+      padding: 10px;
+    }
+
+    /* Style the images inside the grid */
+    .column img {
+      opacity: 0.8; 
+      cursor: pointer; 
+    }
+
+    .column img:hover {
+      opacity: 1;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* The expanding image container (positioning is needed to position the close button and the text) */
+    .container {
+      position: relative;
+      display: none;
+    }
+
+    /* Expanding image text */
+    #imgtext {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      color: white;
+      font-size: 20px;
+    }
+
+    /* Closable button inside the image */
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="top">
+            <h1>Lab3 - My page using bootstrap - D20125947 Bruno dos Santos </h1>                   
+            <div>
+                <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav">
+
+                            <div class="dropdown show">
+                                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Previous Labs </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="lab1/index.html" target="_blank">  CA-Lab-1 </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="lab2/index.html" target="_blank">  CA-Lab-2 </a>
+                                </div>
+                            </div>
+                                <a class="navbar-brand" href="index.html">Home</a>
+                                <a class="navbar-brand" href="pastschools.html">Past Schools</a>
+                                <a class="navbar-brand" href="employers.html">Employers</a> 
+                        </ul>
+                    </div>
+                </nav>
+                
+                <div>
+                    <img src="img/me.jpeg" class="rounded-circle"  width="15%" height="15%" alt="me"> 
+                </div>
+                
+            </div>
+    </div>
+        
+        <div id="bottom">
+            <div>
+                <div>
+                </div>
+                <div>
+                    <div class="row">
+                        <div id="demo" style="margin: auto" class="carousel slide" data-ride="carousel">
+                            <ul class="carousel-indicators">
+                                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                <li data-target="#demo" data-slide-to="1"></li>
+                                <li data-target="#demo" data-slide-to="2"></li>
+                                <li data-target="#demo" data-slide-to="3"></li>
+                                <li data-target="#demo" data-slide-to="4"></li>
+                            </ul>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="img/rome.jpeg" alt="Rome" >
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/rome2.jpeg" alt="Rome">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/ireland.jpeg" alt="find new places" >
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/workhard.jpg" alt="working hard or hard working">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a>
+                            <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon"></span> </a>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Summary</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at massa sed nisi fringilla venenatis ut sit amet eros. Pellentesque sed ex sollicitudin, facilisis arcu vel, imperdiet libero. Phasellus consequat leo porta dui malesuada aliquet in vel leo. In tortor mauris, congue vel mi at, bibendum vestibulum dui. Ut placerat pharetra metus, id tempor libero sollicitudin sed. Sed eget nibh fringilla, faucibus mauris et, faucibus lorem. Fusce id dolor at tellus euismod feugiat sed nec odio. Proin vitae orci leo. Aenean hendrerit nec nulla non consectetur. Fusce egestas, ligula eu porttitor vehicula, orci augue sodales turpis, eget bibendum sem purus sed nibh. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed nibh enim, commodo at ultricies ut, lacinia a orci. Sed sit amet sem tortor.
+                </p>
+                <p>
+                    Etiam tempor pulvinar lectus, at auctor augue commodo nec. Donec rhoncus euismod arcu ut mattis. Mauris sit amet est id nisl ultrices vestibulum sit amet consequat purus. Proin lectus ipsum, vestibulum sed nulla sit amet, bibendum viverra eros. Proin tincidunt elementum elit ac gravida. Aenean eleifend nunc massa, sit amet aliquam ligula vulputate nec. Vivamus non vestibulum dolor, ut facilisis est. Aenean gravida lorem et fringilla consequat. Nunc vulputate velit et ullamcorper ultrices. Phasellus et vulputate nisi. Duis gravida dolor sit amet erat aliquet, et sodales tortor porta. Quisque vulputate quam nulla, ac vehicula est vehicula sed. Fusce sit amet maximus arcu. Vestibulum libero elit, congue quis sodales vehicula, dignissim nec magna.
+                </p>
+            </div>
+            <div>
+                <h2>Cover letter</h2>
+                <p>
+                    Nam sollicitudin varius enim, at dictum diam imperdiet id. Aenean tincidunt leo ac nisl interdum semper. Curabitur aliquam leo mauris, non viverra tellus accumsan ac. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis consequat sapien. Phasellus elementum facilisis mauris. Etiam sed pellentesque mi, non gravida mi. Etiam mollis tortor sed sem elementum hendrerit. Ut interdum egestas orci, a semper magna.
+                </p>
+                <p>
+                    Pellentesque pellentesque gravida dapibus. Sed a purus vel erat pretium condimentum. Fusce semper lorem nec orci viverra, ut scelerisque enim euismod. Nullam fermentum quam eros, at facilisis justo bibendum at. Nulla ut maximus metus. Sed scelerisque est ligula, quis mollis justo eleifend ac. Nunc efficitur tellus sed nisi semper elementum. Aliquam erat volutpat. Vestibulum in velit interdum metus congue scelerisque. Vestibulum placerat posuere varius. Nulla interdum est ut accumsan porta. Aliquam erat volutpat. Donec luctus enim vel velit malesuada ultrices. Duis eget bibendum metus.
+                </p>
+            </div>
+            <div id="nestedList">
+                <h2>Nested List</h2>
+                <ul>
+                  <li>Jobs and Responsibilities
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                        <li>In nec nunc congue, condimentum urna eget, sagittis libero.</li>
+                        <li>Morbi in orci molestie nunc viverra consectetur.</li>
+                    </ul>
+                  </li>
+                  <li>Projects and Technologies
+                    <ul>
+                        <li>Quisque cursus dolor mattis nisl vestibulum sollicitudin.</li>
+                        <li>Etiam vel purus id tortor egestas molestie.</li>
+                        <li> Donec in tortor faucibus sapien malesuada convallis in at eros</li>
+                        <li>Sed at ex et mauris vehicula mattis sagittis vitae augue</li>
+                    </ul>
+                  </li>
+                </ul>
+            
+            </div>
+            
+            <table class="table table-striped">
+            <h2>Table - Education</h2>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">School</th>
+                  <th scope="col">Year</th>
+                  <th scope="col">Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                    <td>Trinity College Dublin</td>
+                    <td>2000</td> 
+                    <td>2.1</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                    <td>Dublin Business School</td>
+                    <td>2012</td> 
+                    <td>2.1</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                    <td>University College Dublin</td>
+                    <td>2010</td> 
+                    <td>1.1</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div id="Questions"> 
+                <h2>Questions</h2>                
+                <div>
+                    <div id="question1">
+                        Question 1 - Where am I from? 
+                        <input type=button value="show answer" id="btn1" />
+                    </div>
+                    <div id="answer1" style="visibility: hidden">
+                        Answer - Brazil
+                    </div>                    
+                </div>
+                <div>
+                    <div id="question2">
+                        Question 2 - What breed is my dog? 
+                        <input type=button value="show answer" id="btn2" />
+                    </div>
+                    <div id="answer2" style="visibility: hidden">
+                        Answer - Corgi
+                    </div>                    
+                </div>
+                <div>
+                    <div id="question3">
+                        Question 3 - What is his name? 
+                        <input type=button value="show answer" id="btn3" />
+                    </div>
+                    <div id="answer3" style="visibility: hidden">
+                        Answer - Gatsby
+                    </div>                    
+                </div>                
+            </div>
+            <div id="Styles"> 
+                <h2>Toggle Css Styles</h2>                
+                <li><button onclick='toggleStyle()'>Toggle</button></li>
+            </div>
+            
+            <div id="gridSystem">
+                <h2>Grid System</h2>
+            <p>Small devices:</p>
+            <div class="row">
+                <div class="col-sm-3" style="background-color:cornsilk;">Web Applications Architectures</div>
+                <div class="col-sm-3" style="background-color:coral;">Software Design</div>
+                <div class="col-sm-3" style="background-color:cornsilk;">Programming Paradigms</div>
+            </div>
+                
+            <p>Medium devices:</p>
+            <div class="row">
+                <div class="col-md-3" style="background-color:cornsilk;">Web Applications Architectures</div>
+                <div class="col-md-3" style="background-color:coral;">Software Design</div>
+                <div class="col-md-3" style="background-color:cornsilk;">Programming Paradigms</div>
+            </div>
+            
+            </div>
+            
+            <div id="extra"> 
+                <br> 
+                <h2> Extra bootstrap - (cards) </h2>
+                <div class="card" style="width: 18rem;margin: auto">
+                  <img class="card-img-top" src="img/tu-logo.png" style="width: 150px;margin: auto" alt="tu logo">
+                  <div class="card-body">
+                    <h5 class="card-title">TU Dublin</h5>
+                    <p class="card-text">Technological University Dublin (Irish: Ollscoil Teicneolaíochta Bhaile Átha Cliath) or TU Dublin is Ireland's first technological university, established on 1 January 2019, taking over all functions and operations of the three preceding institutions</p>
+                    <div id="txt"></div>
+                    <a href="https://www.tudublin.ie" class="btn btn-primary">Go TU's website</a>
+                  </div>
+                </div>
+            </div>
+            
+            <div id="photos"> 
+                <div style="text-align:center">
+                  <h2>Interactive Image Gallery</h2>
+                  <p>Click on the images below to expand it:</p>
+                </div>
+                <div class="container">
+                  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                  <img id="expandedImg" style="width:100%">
+                  <div id="imgtext"></div>
+                </div>   
+                <!-- The four columns -->
+                <div class="row">
+                  <div class="column">
+                    <img  src="img/rome.jpeg" alt="Rome" style="width:100%" onclick="resizePhoto(this);" id="photo1">
+                  </div>
+                  <div class="column">
+                    <img src="img/rome2.jpeg" alt="Rome" style="width:100%" onclick="resizePhoto(this);" id="photo2">
+                  </div>
+                  <div class="column">
+                    <img src="img/ireland.jpeg" alt="find new places" style="width:100%" onclick="resizePhoto(this);" id="photo3">
+                  </div>
+                  <div class="column">
+                    <img src="img/workhard.jpg" alt="working hard or hard working" style="width:100%" onclick="resizePhoto(this);" id="photo4">
+                  </div>
+                </div>
+                
+            </div>
+            <div>
+                <h2> end of the page, thanks for stopping by.</h2>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script>
+        
+        document.getElementById("btn1").addEventListener("click", hide_show_1);
+        document.getElementById("btn2").addEventListener("click", hide_show_2);
+        document.getElementById("btn3").addEventListener("click", hide_show_3);
+        
+        function hide_show_1(){
+            hide_show("1");
+        }
+        function hide_show_2(){
+            hide_show("2");
+        }
+        function hide_show_3(){
+            hide_show("3");
+        }
+        
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML =
+            h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 3000);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i}  
+                return i;
+        }
+                
+        function hide_show(qID){
+            var x = document.getElementById("answer"+qID);
+            var y = document.getElementById("btn"+qID);
+            if (x.style.visibility === "hidden") {
+                x.style.visibility = "visible";
+                y.value = "hide answer";
+            } else {
+                x.style.visibility = "hidden";
+                y.value = "show answer";
+            }            
+        }
+        
+
+        var cssStyle = document.getElementById('style');
+        var listStyles = ["css/professional.css", "css/creative.css"];
+
+        window.onload = function(){
+            startTime();
+            if(localStorage && localStorage.getItem("style"))
+                cssStyle.href = localStorage.getItem("style");
+        };
+
+        function toggleStyle(){
+            var previousStyle = cssStyle.href;
+
+            if(previousStyle.endsWith(listStyles[0]))
+                newStyle = listStyles[1];
+            else
+                newStyle = listStyles[0];
+
+            cssStyle.href = newStyle;
+
+            if(localStorage)
+                localStorage.setItem("style", newStyle);
+        };
+        
+         function resizePhoto(imgs) {
+             var x = document.getElementById(imgs.id);                        
+             var expandImg = document.getElementById("expandedImg");
+             var imgText = document.getElementById("imgtext");
+             
+             ["1","2", "3", "4"].forEach(f => document.getElementById("photo"+f).style.border = "")
+
+             x.style.border = "1px solid black";
+             expandImg.src = imgs.src;
+             imgText.innerHTML = imgs.alt;
+             expandImg.parentElement.style.display = "block";
+        }      
+
+    </script>
+</body>
+</html>

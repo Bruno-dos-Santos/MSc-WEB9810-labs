@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "jest",
+    "license": "GNU General Public License (GPL)"
+  },
+  "devDependencies": {
+    "jest": "^26.5.3"
+  }
+}
